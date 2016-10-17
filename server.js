@@ -8,6 +8,7 @@ var schema = buildSchema(`
     quoteOfTheDay: String!
     random: Float!
     rollThreeDice: [Int]
+    yourInput(number: Int!): Int!
     rollDice(numDice: Int!, numSides: Int): [Int]
   }
 `);
@@ -22,6 +23,9 @@ var root = {
   },
   rollThreeDice: () => {
     return [1, 2, 3].map(_ => 1 + Math.floor(Math.random() * 6));
+  },
+  yourInput: ({number}) => {
+    return number;
   },
   rollDice: function ({numDice, numSides}) {
     var output = [];
